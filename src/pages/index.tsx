@@ -22,6 +22,10 @@ export default function Home() {
   const [totalInvestment, setTotalInvestment] = useState(2500000);
   const [compoundingFrequency, setCompoundingFrequency] = useState("Yearly");
 
+  const minTotalInvestment = 1000;
+  const maxTotalInvestment = 10000000;
+  const stepTotalInvestment = 1000;
+
   const [invested, setInvested] = useState(2500000);
   const [totalInterest, setTotalInterest] = useState(1006379);
   const [totalAmount, setTotalAmount] = useState(3506379);
@@ -33,20 +37,22 @@ export default function Home() {
   let timePeriod = 5;
 
   function calculate() {
-    tempCompoundingFrequency = compoundingFrequency === "Yearly" ? 1 : 2;
-    principle = totalInvestment;
+    if (totalInvestment >= minTotalInvestment) {
+      tempCompoundingFrequency = compoundingFrequency === "Yearly" ? 1 : 2;
+      principle = totalInvestment;
 
-    let maturity = Math.round(
-      principle *
-        Math.pow(
-          1 + annualIntrestRate / (100 * tempCompoundingFrequency),
-          timePeriod * tempCompoundingFrequency
-        )
-    );
+      let maturity = Math.round(
+        principle *
+          Math.pow(
+            1 + annualIntrestRate / (100 * tempCompoundingFrequency),
+            timePeriod * tempCompoundingFrequency
+          )
+      );
 
-    setInvested(principle);
-    setTotalAmount(maturity);
-    setTotalInterest(maturity - principle);
+      setInvested(principle);
+      setTotalAmount(maturity);
+      setTotalInterest(maturity - principle);
+    }
   }
 
   return (
@@ -106,9 +112,9 @@ export default function Home() {
                   <InputSlider
                     id="initialInvestment"
                     type="rupees"
-                    min={1000}
-                    max={10000000}
-                    step={1000}
+                    min={minTotalInvestment}
+                    max={maxTotalInvestment}
+                    step={stepTotalInvestment}
                     value={totalInvestment}
                     setValue={setTotalInvestment}
                   />
