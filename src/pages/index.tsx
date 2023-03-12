@@ -14,7 +14,7 @@ import InputDisabled from "../Components/InputDisabled.jsx";
 import Table from "../Components/Table.jsx";
 
 import DoughnutChart from "../Components/DoughnutChart.jsx";
-import SliderInput from "../Components/SliderInput.jsx";
+import InputSlider from "../Components/InputSlider.jsx";
 import UnorderedList from "../Components/UnorderedList.jsx";
 import RelatedCalculators from "@/Components/RelatedCalculators.jsx";
 
@@ -75,7 +75,7 @@ export default function Home() {
 
       <main
         className={
-          "relative [@media(max-width:470px)]:p-5 [@media(max-width:1280px)]:p-10 xl:p-20 w-full overflow-x-hidden flex-col justify-between text-[#464143] font-['poppins']"
+          "relative [@media(max-width:470px)]:p-5 [@media(max-width:1280px)]:p-10 xl:p-20 w-full overflow-x-hidden flex-col justify-between text-[#464143] font-['poppins'] leading-[18px] "
         }
       >
         <div>
@@ -103,7 +103,7 @@ export default function Home() {
                 <div>
                   {/*Initial investment block*/}
                   <div>Initial investment</div>
-                  <SliderInput
+                  <InputSlider
                     id="initialInvestment"
                     type="rupees"
                     min={1000}
@@ -163,7 +163,7 @@ export default function Home() {
           </CalculatorWrapper>
 
           {/* Side Pannel */}
-          <div className="xl:max-h-[413.2px]  xl:w-[23%] ">
+          <div className="xl:max-h-[407.2px]  xl:w-[23%] ">
             <InfoBox
               type={"sidePannel"}
               contents={[
