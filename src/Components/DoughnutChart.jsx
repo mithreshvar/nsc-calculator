@@ -31,6 +31,7 @@ function DoughnutChart({ invested, totalInterest, dependency }) {
       borderRadius: 20,
       style: {
         color: '#000000',
+        fontSize: '12px',
       },
       formatter() {
         return `${this.key} <strong>\u20B9 ${this.y.toLocaleString("en-In")}</strong>`
@@ -44,7 +45,31 @@ function DoughnutChart({ invested, totalInterest, dependency }) {
     }],
     credits: {
       enabled: false,
-    }
+    },
+    responsive: {
+      rules: [{
+        condition: {
+          minWidth: 607
+        },
+        chartOptions: {
+          tooltip: {
+            backgroundColor: '#FFFFFF',
+            borderColor: '#FFFFFF',
+            borderRadius: 20,
+            style: {
+              color: '#000000',
+              fontSize: '14px',
+            },
+            formatter() {
+              return `${this.key} <strong>\u20B9 ${this.y.toLocaleString("en-In")}</strong>`
+            },
+            labels: {
+              enabled: false,
+            }
+          },
+        }
+      }]
+    },
   });
 
   useEffect(() => {
